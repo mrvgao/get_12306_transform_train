@@ -7,10 +7,8 @@ import sys
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
-def write_result(line):
-    result = 'result.txt'
-    result = open(result, 'w+')
-    result.write(line)
+result = 'result.txt'
+result = open(result, 'w+')
 
     
 def make_address_dic():
@@ -36,11 +34,6 @@ def print_train_no(r):
         print(t['station_train_code'])
 
 
-def could_to_somewhere(city, r):
-    if 'datas' in r.json()['data']:
-        pass
-
-
 def test_two_city_have_seats(city1, city2, time):
     url = combine_url(begin=city1, end=city2, time=time)
     r = requests.get(url, verify=False)
@@ -49,7 +42,7 @@ def test_two_city_have_seats(city1, city2, time):
     if 'datas' in JSON:
         seats = filter(lambda r: have_seats(r), JSON['datas'])
         if len(list(seats)) == 0:
-            print('no')
+            #print('no')
             return False
         else:
             return seats
@@ -82,9 +75,9 @@ def find_transform(START, TO, time):
     for city in address_list:
         if test_two_city_have_seats(START, city, time):
             if test_two_city_have_seats(city, TO, time) or test_two_city_have_seats(city, TO, time+1):
-                line = "%s ===> %s ==> %s" % (address_list[START], address_list[city], address_list[TO])
+                line = "\n%s: %s ===> %s ==> %s" % (str(time), address_list[START], address_list[city], address_list[TO])
                 print(line)
-                write_result(line)
+                result.write(line)
             
     
 def from_city_get_code(city):
