@@ -37,6 +37,12 @@ def print_train_no(r):
 def test_two_city_have_seats(city1, city2, time):
     url = combine_url(begin=city1, end=city2, time=time)
     r = requests.get(url, verify=False)
+
+    try:
+        r.raise_for_status()
+    except Exception as e:
+        print('网络错误')
+        print(e)
     
     JSON = r.json()['data']
     if 'datas' in JSON:
