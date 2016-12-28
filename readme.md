@@ -7,6 +7,6 @@ all the codes should be run in **python 3**.
 
 Python 2.7 is not support for this.
 
-# How to contribut?
+# How to contribute?
 
 If you have any interest with this, please add an issue or email me directly. 
