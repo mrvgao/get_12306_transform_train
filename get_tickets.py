@@ -89,5 +89,12 @@ def from_city_get_code(city):
         return None
 
 
+start = input('input start location(eg. 杭州): ____ \b\b\b\b')
+end = input('input destination (eg. 成都): ____ \b\b\b\b')
+
+lastest = input('请输出最晚乘车时间： 一月__日\b\b\b')
+
+print('From {0} ==> {1}, the lastest data is January {2}'.format(start, end, lastest))
+
 for t in range(20, 25):
-    test_two_city_could_arrive('杭州', '成都', t)
+    test_two_city_could_arrive(start, end, t)
